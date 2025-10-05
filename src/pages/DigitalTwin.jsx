@@ -1,41 +1,22 @@
+
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import Scene from '../components/3d/Scene'; // Assuming components are in `src/components`
 
-function TrainCube({ position, color }) {
+export default function DigitalTwin() {
   return (
-    <mesh position={position}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={color} />
-    </mesh>
-  );
-}
+    <div style={{ padding: '20px' }}>
+      <h1>Digital Twin Viewer 🤖</h1>
+      <p>An interactive 3D model rendered with React Three Fiber.</p>
 
-function DigitalTwin() {
-  const trainPositions = [
-    { id: 'Port001', x: 0, z: 0, status: 'Revenue' },
-    { id: 'Port002', x: 2, z: 0, status: 'Idle' },
-  ];
-
-  const statusColor = {
-    Revenue: 'green',
-    Idle: 'yellow',
-    'Under Maintenance': 'red'
-  };
-
-  return (
-    <div style={{ height: '500px' }}>
-      <Canvas camera={{ position: [5, 5, 5] }}>
-        <ambientLight />
-        <OrbitControls />
-        {trainPositions.map((train, i) => (
-          <TrainCube
-            key={i}
-            position={[train.x, 0.5, train.z]}
-            color={statusColor[train.status]}
-          />
-        ))}
-      </Canvas>
+      {/* This div is the container for your 3D canvas */}
+      <div style={{ height: '75vh', width: '100%', background: '#E0E0E0', borderRadius: '8px' }}>
+        <Canvas
+          shadows // Enable shadows globally
+          camera={{ position: [4, 4, 6], fov: 50 }} // Set initial camera position and field-of-view
+        >
+          <Scene />
+        </Canvas>
+      </div>
     </div>
   );
 }
-export default DigitalTwin;
