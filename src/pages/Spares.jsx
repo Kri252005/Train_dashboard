@@ -1,10 +1,11 @@
-import { spareParts } from '../mockData';
-function Spares() {
+import React from 'react';
+
+const Spares = () => {
   return (
     <div>
-      <h2>Spare Parts Usage</h2>
-      <p>Placeholder for spare parts table.</p>
+      <h1>Spares</h1>
     </div>
   );
-}
+};
+
 export default Spares;
